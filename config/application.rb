@@ -41,5 +41,7 @@ module Iptrack
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.x.api_provider.access_key = ENV.fetch("ACCESS_KEY", "7d093c3bbd0eeae31735239c65653417")
   end
 end

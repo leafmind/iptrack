@@ -27,6 +27,6 @@ class GeocodePolicy < ApplicationPolicy
   end
 
   def destroy?
-    api_key.user?
+    api_key.user? || api_key.admin?
   end
 end

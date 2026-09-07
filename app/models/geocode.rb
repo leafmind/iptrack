@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Geocode < ApplicationRecord
+  belongs_to :api_key
+
   before_validation :resolve_host, if: :will_save_change_to_target?
 
   validate :target_valid
-
-  belongs_to :api_key
 
   private
 

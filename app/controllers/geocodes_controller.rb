@@ -13,6 +13,7 @@ class GeocodesController < ApplicationController
   def show
     geocode = GeocodeResource.find(params)
     authorize :geocode, :show?
+
     respond_to do |format|
       format.jsonapi { render jsonapi: geocode }
     end

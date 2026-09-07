@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class ApiKey < ApplicationRecord
-  before_save :convert_token
-
   enum :role, { user: 0, admin: 1 }, default: :user
 
   has_many :geocodes, dependent: :destroy
+
+  before_save :convert_token
 
   class << self
     def digest(plain_token)

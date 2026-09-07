@@ -14,7 +14,6 @@ class ApplicationResource < Graphiti::Resource
   self.attributes_filterable_by_default = true
 
   # INFO: Used for link generation
-  self.base_url = ENV.fetch('BASE_URL', 'http://localhost:3000')
   self.endpoint_namespace = '/api/v1'
 
   # INFO: Used for auth context

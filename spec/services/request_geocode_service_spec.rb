@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RedisService do
+RSpec.describe RequestGeocodeService do
   describe 'initialize' do
     let(:test_arg) { 'some arg' }
     subject(:solution) { described_class.new(test_arg) } 
