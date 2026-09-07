@@ -99,6 +99,23 @@ GEM
     dotenv (3.2.0)
     drb (2.2.0)
       ruby2_keywords
+    dry-core (1.2.0)
+      concurrent-ruby (~> 1.0)
+      logger
+      zeitwerk (~> 2.6)
+    dry-inflector (1.3.1)
+    dry-logic (1.6.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.1)
+      zeitwerk (~> 2.6)
+    dry-types (1.9.1)
+      bigdecimal (>= 3.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     ed25519 (1.4.0)
     erubi (1.13.1)
     et-orbi (1.4.2)
@@ -117,6 +134,14 @@ GEM
       raabro (~> 1.4)
     globalid (1.4.0)
       activesupport (>= 6.1)
+    graphiti (2.1.1)
+      activesupport (>= 7.1)
+      concurrent-ruby (>= 1.2, < 2.0)
+      dry-types (>= 0.15.0, < 2.0)
+      jsonapi-renderer (~> 0.2, >= 0.2.2)
+      jsonapi-serializable (~> 0.3.0)
+      ostruct (>= 0.5)
+      rescue_registry (~> 1.1)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -127,6 +152,9 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.7.1)
+    jsonapi-renderer (0.2.2)
+    jsonapi-serializable (0.3.1)
+      jsonapi-renderer (~> 0.2.0)
     kamal (2.12.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -138,6 +166,18 @@ GEM
       sshkit (>= 1.23.0, < 2.0)
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
     logger (1.6.0)
@@ -231,6 +271,8 @@ GEM
     regexp_parser (2.12.0)
     reline (0.5.7)
       io-console (~> 0.5)
+    rescue_registry (1.1.0)
+      activesupport (>= 7.1)
     rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -332,8 +374,10 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  graphiti
   image_processing (~> 1.2)
   kamal
+  kaminari
   puma (>= 5.0)
   rails (~> 8.1.3)
   rspec-rails
