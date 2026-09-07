@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_07_094821) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_07_094801) do
   create_table "api_keys", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "role", default: 0, null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_07_094821) do
   end
 
   create_table "geocodes", force: :cascade do |t|
+    t.integer "api_key_id", null: false
     t.string "city"
     t.string "country"
     t.datetime "created_at", null: false
@@ -29,6 +30,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_07_094821) do
     t.json "payload"
     t.string "target", null: false
     t.datetime "updated_at", null: false
-    t.index ["target", "host"], name: "index_geocodes_on_target_and_host", unique: true
+    t.index ["api_key_id"], name: "index_geocodes_on_api_key_id"
+    t.index ["target"], name: "index_geocodes_on_target", unique: true
   end
+
+  add_foreign_key "geocodes", "api_keys"
 end

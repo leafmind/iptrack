@@ -9,9 +9,11 @@ class CreateGeocodes < ActiveRecord::Migration[8.1]
       t.string :city
       t.json :payload
 
+      t.references :api_key, null: false, foreign_key: true
+
       t.timestamps
     end
 
-    add_index :geocodes, [:target, :host], unique: true
+    add_index :geocodes, :target, unique: true
   end
 end

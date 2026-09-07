@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
 class ApplicationResource < Graphiti::Resource
   self.abstract_class = true
   self.adapter = Graphiti::Adapters::ActiveRecord
+
+  # Otherwise it won't allow custom IDs
+  self.validate_requests = false
 
   # INFO: Default resource settings
   self.attributes_readable_by_default = true
@@ -13,7 +18,7 @@ class ApplicationResource < Graphiti::Resource
   self.endpoint_namespace = '/api/v1'
 
   # INFO: Used for auth context
-  def api_key
-    context.api_key
+  def current_api_key
+    context.current_api_key
   end
 end

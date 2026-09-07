@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :api_key, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(api_key, record)
+    @api_key = api_key
     @record = record
   end
 
@@ -34,20 +34,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  class Scope
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      raise NoMethodError, "You must define #resolve in #{self.class}"
-    end
-
-    private
-
-    attr_reader :user, :scope
   end
 end

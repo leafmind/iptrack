@@ -1,23 +1,17 @@
 # frozen_string_literal: true
 
-class GeocodePolicy
-  attr_reader :api_key, :record
-
-  def initialize(api_key, record)
-    @api_key = api_key
-    @record = record
-  end
+class GeocodePolicy < ApplicationPolicy
 
   def index?
-    false
+    api_key.admin?
   end
 
   def show?
-    false
+    api_key.user?
   end
 
   def create?
-    false
+    api_key.user?
   end
 
   def new?
@@ -25,7 +19,7 @@ class GeocodePolicy
   end
 
   def update?
-    false
+    api_key.admin?
   end
 
   def edit?
@@ -33,21 +27,6 @@ class GeocodePolicy
   end
 
   def destroy?
-    false
-  end
-
-  class Scope
-    def initialize(api_key, scope)
-      @api_key = api_key
-      @scope = scope
-    end
-
-    def resolve
-      raise NoMethodError, "You must define #resolve in #{self.class}"
-    end
-
-    private
-
-    attr_reader :api_key, :scope
+    api_key.user?
   end
 end
