@@ -11,4 +11,9 @@ class ApplicationResource < Graphiti::Resource
   # INFO: Used for link generation
   self.base_url = ENV.fetch('BASE_URL', 'http://localhost:3000')
   self.endpoint_namespace = '/api/v1'
+
+  # INFO: Used for auth context
+  def api_key
+    context.api_key
+  end
 end

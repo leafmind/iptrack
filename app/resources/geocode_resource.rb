@@ -1,8 +1,8 @@
 class GeocodeResource < ApplicationResource
-  model Geocode
+  # model Geocode
 
-  default_sort [{ name: :target }]
-  page_default_size 10
+  # default_sort [{ name: :target }]
+  # page_default_size 10
 
   attribute :target, :string
   attribute :host, :boolean, wtiteable: false
