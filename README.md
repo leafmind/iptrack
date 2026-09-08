@@ -50,6 +50,23 @@ DELETE `/api/v1/geocodes/<ip_or_domain>`
 
 Please ensure you have a valid `X-Api-Key` header. (see db/seeds.rb)
 
+Example POST request:
+
+```
+  curl -X POST http://localhost:3000/api/v1/geocodes \
+  -H "Content-Type: application/vnd.api+json" \
+  -H "Accept: application/vnd.api+json" \
+  -H "X-Api-Key: USR1" \
+  -d '{
+    "data": {
+      "type": "geocodes",
+      "attributes": {
+        "target": "1.0.0.1"
+      }
+    }
+  }'
+```
+
 ## Application Structure
 
 ### Models
