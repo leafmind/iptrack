@@ -48,7 +48,7 @@ PATCH `/api/v1/geocodes/<ip_or_domain>` (admin-only)
 
 DELETE `/api/v1/geocodes/<ip_or_domain>`
 
-Please ensure you have a valid `X-Api-Key` header.
+Please ensure you have a valid `X-Api-Key` header. (see db/seeds.rb)
 
 ## Application Structure
 
