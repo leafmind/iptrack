@@ -2,6 +2,8 @@
 
 module ApiProviders
   class Base
+    class GatewayError < StandardError; end
+
     def initialize(credentials)
       @credentials = credentials
       @results = {}
@@ -9,10 +11,18 @@ module ApiProviders
 
     def fetch_results(target, host)
       fetch_data(target, host)
-      prepare_results
+      if success?
+        prepare_results
+      else
+        raise GatewayError
+      end
     end
 
     private
+
+    def success?
+      raise 'Not Implemented'
+    end
 
     def fetch_data
       raise 'Not Implemented'

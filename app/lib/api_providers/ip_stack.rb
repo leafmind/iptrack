@@ -15,7 +15,12 @@ module ApiProviders
       request_uri = URI.join(BASE_URI, target)
       request_uri.query = request_params.to_query
 
-      @results = JSON.parse(HTTP.get(request_uri).to_s)
+      response = HTTP.get(request_uri)
+      @results = JSON.parse(response.to_s)
+    end
+
+    def success?
+      @results['success'] != false
     end
 
     def prepare_results

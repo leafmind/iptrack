@@ -20,6 +20,11 @@ class ApplicationController < ActionController::API
     message: ->(error) { error.message },
     detail: ->(error) { 'No Record' }
 
+  register_exception ApiProviders::Base::GatewayError,
+    status: 502,
+    message: ->(error) { error.message },
+    detail: ->(error) { 'Gateway Error' }
+
   def pundit_user
     current_api_key
   end
