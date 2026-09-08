@@ -43,7 +43,7 @@ class GeocodesController < ApplicationController
 
   def destroy
     geocode = GeocodeResource.find(params)
-    authorize :geocode, :delete?
+    authorize :geocode, :destroy?
 
     if geocode.destroy
       render jsonapi: { meta: {} }, status: 200

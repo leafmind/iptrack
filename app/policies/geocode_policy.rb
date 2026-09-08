@@ -7,11 +7,11 @@ class GeocodePolicy < ApplicationPolicy
   end
 
   def show?
-    api_key.user?
+    api_key.user? || api_key.admin?
   end
 
   def create?
-    api_key.user?
+    api_key.user? || api_key.admin?
   end
 
   def new?

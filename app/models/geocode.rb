@@ -17,9 +17,7 @@ class Geocode < ApplicationRecord
 
     if host
       uri = URI.parse(target)
-      valid_target ||= uri.is_a?(URI::HTTP)
-
-      errors.add(:target, "is not a valid IP/Host address") if !valid_target
+      errors.add(:target, "is not a valid IP/Host address") if !uri.is_a?(URI::HTTP)
     end
   end
 
