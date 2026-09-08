@@ -34,7 +34,7 @@ Prepare the database and seeds:
 
 `bin/rails db:prepare`
 
-Configure the required environment variables, including the IPStack `API_KEY` if you have one. If no key is provided, the application will use the default API key.
+Configure the required environment variables, including the IPStack `ACCESS_KEY` if you have one. If no key is provided, the application will use the default ACCESS_KEY key.
 
 #### Endpoints
 
@@ -85,7 +85,7 @@ The service accepts a model and an API provider and delegates the geolocation lo
 #### ApiProviders::IpStack
 A client responsible for communicating with the IPStack API and retrieving geolocation information for an IP address or URL.
 
-By default it uses my own api key, but feel free to redefine it by setting `API_KEY` env.
+By default it uses my own api key, but feel free to redefine it by setting `ACCESS_KEY` env.
 
 ### Authorization
 
