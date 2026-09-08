@@ -36,17 +36,31 @@ Prepare the database and seeds:
 
 Configure the required environment variables, including the IPStack `API_KEY` if you have one. If no key is provided, the application will use the default API key.
 
+#### Endpoints
+
+GET `/api/v1/geocodes` (admin-only)
+
+GET `/api/v1/geocodes/<ip_or_domain>`
+
+POST `/api/v1/geocodes`
+
+PATCH `/api/v1/geocodes/<ip_or_domain>` (admin-only)
+
+DELETE `/api/v1/geocodes/<ip_or_domain>`
+
+Please ensure you have a valid `X-Api-Key` header.
+
 ## Application Structure
 
 ### Models
 
 #### `ApiKey`
 
-Represents an API key used to authenticate requests to the application.
+Represents an API key used to authenticate requests to the application. (unique index on token)
 
 #### `Geocode`
 
-Stores geolocation information associated with an IP address or URL.
+Stores geolocation information associated with an IP address or URL. (unique index on target)
 
 ### Controllers
 

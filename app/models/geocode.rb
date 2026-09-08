@@ -11,13 +11,13 @@ class Geocode < ApplicationRecord
 
   def target_valid
     if target.blank?
-      errors.add(:target, "can not be blank")
+      errors.add(:target, 'can not be blank')
       return
     end
 
     if host
       uri = URI.parse(target)
-      errors.add(:target, "is not a valid IP/Host address") if !uri.is_a?(URI::HTTP)
+      errors.add(:target, 'is not a valid IP/Host address') if !uri.is_a?(URI::HTTP)
     end
   end
 
