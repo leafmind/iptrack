@@ -1,4 +1,4 @@
-# Geolocation API
+# IP Track: Geolocation API
 
 A simple Rails API for storing and retrieving geolocation data based on an IP address or URL.
 
