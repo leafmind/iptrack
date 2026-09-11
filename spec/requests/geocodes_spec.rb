@@ -3,17 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Geocodes', type: :request do
+  let!(:user_api_key) { create(:api_key, role: :user, token: 'user-token') }
+  let!(:admin_api_key) { create(:api_key, role: :admin, token: 'admin-token') }
+
   let(:endpoint) { '/api/v1/geocodes' }
-  let(:user_api_key) { create(:api_key, role: :user, token: 'user-token') }
-  let(:admin_api_key) { create(:api_key, role: :admin, token: 'api-token') }
   let(:user_headers) { { 'X-Api-Key' => 'user-token', 'Content-Type' => 'application/vnd.api+json', 'Accept' => 'application/vnd.api+json' } }
   let(:admin_headers) { { 'X-Api-Key' => 'admin-token', 'Content-Type' => 'application/vnd.api+json', 'Accept' => 'application/vnd.api+json' } }
+
   let(:service_double) { instance_double(RequestGeocodeService, call: { city: 'City', country: 'Country' }) }
 
   before do
     allow(RequestGeocodeService).to receive(:new).and_return(service_double)
-    user_api_key.update!(token: 'user-token')
-    admin_api_key.update!(token: 'admin-token')
     handle_request_exceptions(true)
   end
 
@@ -218,13 +218,17 @@ RSpec.describe 'Geocodes', type: :request do
 
         expect(response).to have_http_status(:ok)
         data = jsonapi_data
-        expect(data.id).to eq('example.com')
+        expect(data.longitude).to eq(update_params.dig(:data, :attributes, :longitude))
+        expect(data.latitude).to eq(update_params.dig(:data, :attributes, :latitude))
       end
 
       it 'updates admins own geocode' do
         patch "#{endpoint}/192.168.1.1", params: update_params.to_json, headers: admin_headers
 
         expect(response).to have_http_status(:ok)
+        data = jsonapi_data
+        expect(data.longitude).to eq(update_params.dig(:data, :attributes, :longitude))
+        expect(data.latitude).to eq(update_params.dig(:data, :attributes, :latitude))
       end
     end
   end

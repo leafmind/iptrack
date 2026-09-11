@@ -3,8 +3,10 @@
 class GeocodeResource < ApplicationResource
   before_save do |model|
     model.api_key ||= context.current_api_key
-    geo_attrs = RequestGeocodeService.new(model).call if model.valid?
-    model.assign_attributes(geo_attrs) if model.valid?
+    if model.valid?
+      geo_attrs = RequestGeocodeService.new(model).call
+      model.assign_attributes(geo_attrs)
+    end
   end
 
   public_id :target
