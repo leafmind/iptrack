@@ -82,7 +82,7 @@ GEM
     bigdecimal (3.1.5)
     bootsnap (1.26.0)
       msgpack (~> 1.5)
-    brakeman (8.0.6)
+    brakeman (8.1.0)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
@@ -240,7 +240,7 @@ GEM
     pundit (2.5.2)
       activesupport (>= 3.0.0)
     raabro (1.5.0)
-    racc (1.7.3)
+    racc (1.8.1)
     rack (3.2.7)
     rack-session (2.1.2)
       base64 (>= 0.1.0)
